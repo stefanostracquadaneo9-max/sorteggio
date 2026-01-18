@@ -12,13 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.6'
+          flutter-version: '3.38.7'   # <--- versione compatibile con il tuo progetto
 
       - run: flutter config --enable-macos-desktop
       - run: flutter pub get
-      - run: flutter build macos --release || exit 0   # forziamo a non fallire
+      - run: flutter build macos --release
 
       - uses: actions/upload-artifact@v4
         with:
