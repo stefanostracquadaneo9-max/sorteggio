@@ -13,10 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: 'stable'
+
+      - name: Enable macOS desktop
+        run: flutter config --enable-macos-desktop
 
       - name: Flutter pub get
         run: flutter pub get
